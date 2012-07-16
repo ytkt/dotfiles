@@ -1,12 +1,12 @@
 ;; load-pathを追加する関数を定義
 (defun add-to-load-path (&rest paths)
   (let (path)
-	(dolist (path paths paths)
-	  (let ((default-directory
-			  (expand-file-name (concat user-emacs-directory path))))
-		(add-to-list 'load-path default-directory)
-		(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-			(normal-top-level-add-subdirs-to-load-path))))))
+    (dolist (path paths paths)
+      (let ((default-directory
+	      (expand-file-name (concat user-emacs-directory path))))
+	(add-to-list 'load-path default-directory)
+	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+	    (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 (add-to-load-path "elisp" "conf" "public_repos")
@@ -17,11 +17,6 @@
 
 ;; スタートアップページを表示しない
 (setq inhibit-startup-message t)
-
-
-;; バックアップファイルを作らない
-;; (setq backup-inhibited t)
-
 
 ;; フォントの大きさを "C-x C-+ or C--" で変更
 (global-set-key [(control ?+)] (lambda () (interactive)
@@ -68,7 +63,7 @@
 
 ;; 行番号を常に表示する
 (global-linum-mode t)
-lasetq linum-format "%4d ")
+(setq linum-format "%4d ")
 
 
 ;;; インデントの設定 ------------------------------
@@ -102,8 +97,8 @@ lasetq linum-format "%4d ")
 ;; 対応する括弧のハイライト
 (setq show-paren-dilay 0)
 (show-paren-mode t)
-;; parenのスタイル: expressionは括弧内も強調表示
-;;(setq show-paren-style 'expression)
+;; parenのスタイル: exressionは括弧内も強調表示
+;;(setq show-paren-style 'exression)
 ;; フェイスを変更する
 (set-face-background 'show-paren-match-face nil)
 (set-face-underline-p 'show-paren-match-face "yellow")
@@ -156,7 +151,6 @@ lasetq linum-format "%4d ")
 (when (require 'redo nil t)
   ;; C-. にredoを割り当てる
   (global-set-key (kbd "C-.") 'redo))
-
 
 
 ;;; Anything
@@ -216,7 +210,6 @@ lasetq linum-format "%4d ")
   (global-set-key (kbd "C-M-o") 'anything-c-moccur-occur-by-moccur))
 
 
-
 ;;; Auto Complete Mode ---------------------------------------------------
 ;; auto-complete の設定
 (when (require 'auto-complete-config nil t)
@@ -230,6 +223,215 @@ lasetq linum-format "%4d ")
 
 
 
+
+;;; color-moccurの設定 ---------------------------------------------------
+(when (require 'color-moccur nil t)
+  ;; M-oにoccur-by-moccurを割り当て
+  (define-key global-map (kbd "M-o") 'occur-by-moccur)
+  ;; スペース区切りでAND検索
+  (setq moccur-split-word t)
+  ;; ディレクトリ検索のときに除外するファイル
+  (add-to-list 'dmoccur-exclusion-mask "¥¥.DS_Store")
+  (add-to-list 'dmoccur-exclusion-mask "¥#.+#$")
+  ;; Migemoで利用できる環境であればMigemoを使う
+  (when (and (executable-find "cmigemo")
+			 (require 'migemo nil t))
+	(setq moccur-use-migemo t)))
+
+;; moccur-editの設定
+(require 'moccur-edit nil t)
+;; moccur-edit-finish-editと同時にファイルを保存する
+(defadvice moccur-edit-change-file
+  (after save-after-moccur-edit-buffer activate)
+  (save-buffer))
+
+
+;; grepの結果を直接編集
+(require 'wgrep nil t)
+
+
+;;; 履歴管理 ---------------------------------------------------
+;; undohist
+(when (require 'undohist nil t)
+  (undohist-initialize))
+
+
+
+
+;;; ウィンドウ管理 ---------------------------------------------------
+;;ElScreen
+
+
+
+
+;;; 各種言語の開発環境 ---------------------------------------------------
+;; nxml-mode
+;; (add-to-list 'auto-mode-alist '("¥¥.[sx]?html?¥¥(||.[a-zA-Z]+¥¥?¥¥'" . nxml-mode)
+;; HTML5
+;;(eval-after-load "rng-loc"
+;;  '(add-to-list 'rng-schema-locating-files
+;;				"~/.emacs.d/public_repos/html5-el/schemas.xml"))
+;;(require 'whattf-dt)
+;; </を入力すると自動的にタグを閉じる
+;;(setq nxml-slash-auto-complete-flag t)
+;; M-TABでタグを補完する
+;;(setq nxml-bind-meta-tab-to-complete-flag t)
+;; nxml-modeでauto-complete-modeを利用する
+;;(add-to-list 'ac-modes 'nxml-mode)
+;; 子要素のインデント幅を設定する
+;;(setq nxml-child-indent 0)
+;; 属性値のインデント幅を設定する
+;;(setq nxml-attribute-indent 0)
+
+;; cssm-mode
+(defun css-mode-hooks ()
+  "css-mode hooks"
+  ;; インデントをCスタイルにする
+  (setq css-indent-function #'cssm-c-style-indenter)
+  ;; インデント幅を2にする
+  (setq cssm-indent-level 2)
+  ;; インデントにタブ文字を使わない
+  (setq-default indent-tabs-mode nil)
+  ;; 閉じカッコの前に改行を挿入する
+  (setq cssm-newline-before-closing-bracket t))
+(add-hook 'css-mode-hook 'css-mode-hooks)
+
+;; javascript
+;; js-mode
+(defun js-indent-hook()
+  ;; インデント幅を4にする
+  (setq js-indent-level 2
+		js-expr-indent-offset 2
+		indent-tabs-mode nil)
+  ;; switch文のcaseラベルをインデントする関すを定義する
+  (defun my-js-indent-line ()
+	(interactive)
+	(let*  ((parse-status (save-excursion (syntax-ppss (point-to-bol))))
+			(offset (- (current-column) (current-indentation)))
+			(indentation (js--proper-indentation parse-status)))
+	  (back-to-indentation)
+	  (if (looking-at "case¥¥s-")
+		  (indent-line-to (+ indentation 2))
+		(js-indent-line))
+	  (when (> offset 0) (forward-char offset))))
+  ;; caseラベルのインデント処理をセットする
+  (set (make-local-variable 'indent-line-function) 'my-js-indent-line)
+  ;; ここまでcaseラベルを調整する設定
+  )
+;; js-modeの起動時にhookを追加
+(add-hook 'js-mode-hook 'js-indent-hook)
+
+;; php-mode
+(when (require 'php-mode nil t)
+  (add-to-list 'auto-mode-alist '("¥¥.ctp¥¥'" . php-mode))
+  (setq php-search-url "http://jp.php.net/ja")
+  (setq php-manual-url "http://jp/php/net/manual/ja/"))
+;; C-c C-fで関数のリファレンスを調べられる
+;; php-modeのインデント設定
+(defun php-indent-hook ()
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 4) ; インデントの基本の文字数
+  ;; (c-set-offset 'case-label '+)  ; switch文のcaseラベル
+  (c-set-offset 'arglist-intro '+)  ; 配列の最初の要素が改行した場合
+  (c-set-offset 'arglist-close 0))  ; 配列の閉じ括弧
+(add-hook 'php-mode-hook 'php-indent-hook)
+
+;; php-completion
+(defun php-completion-hook ()
+  (when (require 'php-completion nil t)
+	(php-completion-mode t)
+	(define php-mode-map (kbd "C-o") 'phpcmp-complete)
+	(when (require 'auto-complete nil t)
+	  (make-variable-buffer-local 'ac-sources)
+	  (add-to-list 'ac-sources 'ac-sources-php-completion)
+	  (auto-complete-mode t))))
+(add-hook 'php-mode-hook 'php-completion-hook)
+
+;; perl-modeをcperl-modeのエイリアスにする
+(defalias 'perl-mode 'cperl-mode)
+
+;; cperl-modeにインデント設定
+(setq cperl-indent-level 4           ; インデント幅を4へ
+	  cperl-continued-brace-offset 4 ; 継続する文のオフセット
+	  cperl-brace-offset -4          ; ブレースのオフセット
+	  cperl-label-offset -4          ; labelのオフセット
+	  cperl-indent-parens-as-block t ; 括弧もブロックとしてインデント
+	  cperl-close-paren-offset -4    ; 閉じ括弧のオフセット
+	  cperl-tab-always-indent t      ; タブをインデントにする
+	  cpeap-highlight-variables-indiscriminately t) ;スカラを常にハイライト
+
+;; yaml-mode
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
+
+;; perl-completion
+(defun perl-completion-hook ()
+  (when (require 'perl-completion nil t)
+	(perl-completion-mode t)
+	(when (require 'auto-complete nil t)
+	  (auto-complete-mode t)
+	  (make-variable-buffer-local 'ac-sources)
+	  (setq ac-sources
+			'(ac-source-perl-completion)))))
+(add-hook 'cperl-mode-hook 'perl-completion-hook)
+
+;; ruby-mode
+;; 括弧の自動挿入
+(require 'ruby-electric nil t)
+;; endに対応する行のハイライト
+(when (require 'ruby-block nil t)
+  (setq ruby-block-highlight-toggle t))
+;; インタラクティブrubyを利用する
+(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
+;; ruby-mode-hook用の関すを定義
+(defun ruby-mode-hooks ()
+  (inf-ruby-keys)
+  (ruby-electric-mode t)
+  (ruby-block-mode t))
+;; ruby-mode-hookに追加
+(add-hook 'ruby-mode-hook 'ruby-mode-hooks)
+
+
+;;; aliases ---------------------------------------------------
+;; dtwをdelete-trailing-whitespaceのエイリアスにする
+(defalias 'dtw 'delete-trailing-whitespace)
+
+
+
+;;; Flymake ---------------------------------------------------
+;; C系言語でMakefileが無い場合
+;; Makefileの種類を定義
+(defvar flymake-makefile-filenames
+  '("Makefile" "makefile" "GNUmakefile")
+  "File name for make.")
+;; Makefileがなければコマンドを直接利用するコマンドラインを生成
+;(defun flymake-get-make-gcc-cmdline (source base-dir)
+;  (let (found)
+;	(dolist (makefile flymake-makefile-filenames)
+
+
+
+
+
+
+
+;;; Rinari ---------------------------------------------------
+(require 'rinari)
+;; yasnippet
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elisp/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/elisp/yasnippet-rails/rails-snippets")
+ 
+
+
+;;;  ---------------------------------------------------
+
+
+;;;  ---------------------------------------------------
+
+
 ;;;  ---------------------------------------------------
 
 
@@ -239,8 +441,3 @@ lasetq linum-format "%4d ")
 
 
 
-
-
-
-
-   

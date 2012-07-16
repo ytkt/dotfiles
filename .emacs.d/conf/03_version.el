@@ -11,7 +11,7 @@
 
 ;; TODO ロードパスの読み込み設定の後に移動
 ;; Emacs 24以前のバージョンを利用している
-(when (> emacs-major-version 23)
+(when (> emacs-major-version 24)
   ;; package.elの設定
   (when (require 'package nil t)
 	(add-to-list 'package-archives
