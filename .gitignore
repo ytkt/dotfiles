@@ -3,6 +3,6 @@
 /.emacs.d/*
 
 !/.emacs.d/init.el
-!/.emacs.d/conf
+#!/.emacs.d/conf
 
 .DS_Store
