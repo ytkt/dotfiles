@@ -417,6 +417,8 @@
 
 
 ;;; Rinari ---------------------------------------------------
+(require 'ido)
+(ido-mode t)
 (require 'rinari)
 ;; yasnippet
 (require 'yasnippet)
