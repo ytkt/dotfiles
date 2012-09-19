@@ -300,22 +300,22 @@
 ;; js-mode
 (defun js-indent-hook()
   ;; インデント幅を4にする
-  (setq js-indent-level 2
-		js-expr-indent-offset 2
-		indent-tabs-mode nil)
-  ;; switch文のcaseラベルをインデントする関すを定義する
-  (defun my-js-indent-line ()
-	(interactive)
-	(let*  ((parse-status (save-excursion (syntax-ppss (point-to-bol))))
-			(offset (- (current-column) (current-indentation)))
-			(indentation (js--proper-indentation parse-status)))
-	  (back-to-indentation)
-	  (if (looking-at "case¥¥s-")
-		  (indent-line-to (+ indentation 2))
-		(js-indent-line))
-	  (when (> offset 0) (forward-char offset))))
+  (setq js-indent-level 4
+		js-expr-indent-offset 4)
+;		indent-tabs-mode nil)
+  ;; switch文のcaseラベルをインデントする関数を定義する
+;  (defun my-js-indent-line ()
+;	(interactive)
+;	(let*  ((parse-status (save-excursion (syntax-ppss (point-to-bol))))
+;			(offset (- (current-column) (current-indentation)))
+;			(indentation (js--proper-indentation parse-status)))
+;	  (back-to-indentation)
+;	  (if (looking-at "case¥¥s-")
+;		  (indent-line-to (+ indentation 2))
+;		(js-indent-line))
+;	  (when (> offset 0) (forward-char offset))))
   ;; caseラベルのインデント処理をセットする
-  (set (make-local-variable 'indent-line-function) 'my-js-indent-line)
+;  (set (make-local-variable 'indent-line-function) );'my-js-indent-line)
   ;; ここまでcaseラベルを調整する設定
   )
 ;; js-modeの起動時にhookを追加
@@ -334,7 +334,7 @@
   ;; (c-set-offset 'case-label '+)  ; switch文のcaseラベル
   (c-set-offset 'arglist-intro '+)  ; 配列の最初の要素が改行した場合
   (c-set-offset 'arglist-close 0))  ; 配列の閉じ括弧
-(add-hook 'php-mode-hook 'php-indent-hook)
+(add-hook 'php-mod1e-hook 'php-indent-hook)
 
 ;; php-completion
 (defun php-completion-hook ()
@@ -417,6 +417,8 @@
 
 
 ;;; Rinari ---------------------------------------------------
+(require 'ido)
+(ido-mode t)
 (require 'rinari)
 ;; yasnippet
 (require 'yasnippet)
@@ -427,7 +429,8 @@
 
 
 ;;;  ---------------------------------------------------
-
+;; ビープ音を消す
+(setq ring-bell-function 'ignore)
 
 ;;;  ---------------------------------------------------
 
