@@ -1,0 +1,13 @@
+[user]
+	name = Yuta Kato
+	email = yyttkktt@gmail.com
+[color]
+	ui = auto
+[alias]
+  ch = checkout
+  co = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[core]
+	excludesfile = /Users/yuta/.gitignore
