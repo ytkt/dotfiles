@@ -19,7 +19,8 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
 # Cocoa Emacs
 #alias emacs='open -n /Applications/Emacs.app'
 alias emacsnw='emacs -nw'
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias emacs='/usr/local/Cellar/emacs/24.2/bin/emacs'
+#alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 #alias emacs='open -n /Applications/Emacs.app'
 
 # copy current directory path

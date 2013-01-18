@@ -121,7 +121,6 @@
 
 
 
-
 ;;; フックの設定 ------------------------------------------------------------
 ;; ファイルが #! から始まる場合、+xをを付けて保存する
 (add-hook 'after-save-hook
@@ -223,7 +222,6 @@
 
 
 
-
 ;;; color-moccurの設定 ---------------------------------------------------
 (when (require 'color-moccur nil t)
   ;; M-oにoccur-by-moccurを割り当て
@@ -282,6 +280,8 @@
 ;;(setq nxml-child-indent 0)
 ;; 属性値のインデント幅を設定する
 ;;(setq nxml-attribute-indent 0)
+
+
 
 ;; cssm-mode
 (defun css-mode-hooks ()
@@ -402,9 +402,9 @@
 ;;; Flymake ---------------------------------------------------
 ;; C系言語でMakefileが無い場合
 ;; Makefileの種類を定義
-(defvar flymake-makefile-filenames
-  '("Makefile" "makefile" "GNUmakefile")
-  "File name for make.")
+;;(defvar flymake-makefile-filenames
+;;  '("Makefile" "makefile" "GNUmakefile")
+;;  "File name for make.")
 ;; Makefileがなければコマンドを直接利用するコマンドラインを生成
 ;(defun flymake-get-make-gcc-cmdline (source base-dir)
 ;  (let (found)
