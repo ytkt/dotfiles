@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ln -sf .bashrc ~/
-ln -sf .bash_profile ~/
-ln -sf .emacs.d
-ln -sf git/.gitignore ~/
-ln -sf git/.gitconfig ~/
+ln -sf $HOME/dotfiles/.bashrc $HOME/
+ln -sf $HOME/dotfiles/.bash_profile $HOME/
+ln -sf $HOME/dotfiles/.emacs.d $HOME/
+ln -sf $HOME/dotfiles/git/.gitignore $HOME/
+ln -sf $HOME/dotfiles/git/.gitconfig $HOME/
 #ln -sf .zshrc
