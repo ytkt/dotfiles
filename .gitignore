@@ -7,4 +7,19 @@
 
 
 .emacs.d/undohist
-.DS_Store
+.DS_Store### /Users/yuta/.gitignore-boilerplates/Global/Emacs.gitignore
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+
