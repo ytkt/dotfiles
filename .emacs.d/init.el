@@ -9,7 +9,14 @@
 	    (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
-(add-to-load-path "elisp" "conf" "public_repos")
+(add-to-load-path "elisp" "conf" "public_repos" "elpa")
+
+;; ELPAリポジトリの追加
+(require 'package)
+(add-to-list 'package-archives
+			 '("marmalade" . "http://marmalade-repo.org/packages/")
+			 '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
 
 ;; init-loader
 (require 'init-loader)
@@ -422,9 +429,9 @@
 (require 'rinari)
 ;; yasnippet
 (require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/elisp/yasnippet/snippets")
-(yas/load-directory "~/.emacs.d/elisp/yasnippet-rails/rails-snippets")
+;(yas/initialize)
+;(yas/load-directory "~/.emacs.d/elisp/yasnippet/snippets")
+;(yas/load-directory "~/.emacs.d/elisp/yasnippet-rails/rails-snippets")
  
 
 

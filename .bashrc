@@ -1,10 +1,5 @@
 # for Homebrew
 export PATH=/usr/local/bin:$PATH
-
-
-# Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin 
-
 export PATH="$(brew --prefix)/bin:$PATH"
 
 export MANPATH=/opt/local/man:$MANPATH
@@ -12,6 +7,9 @@ export MANPATH=/opt/local/man:$MANPATH
 # pkgconfig's path
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
 
+# ebenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # carbon emacs
 # alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
@@ -39,13 +37,9 @@ alias la='ls -al'
 
 alias start_psql='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stop_psql='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# RVM
-[ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 
 # php (homebrew)
 #if [ -f -/.bashrc ] ; then
@@ -56,7 +50,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 source ${HOME}/dotfiles/.bash/git-prompt.sh
 source ${HOME}/dotfiles/.bash/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\$ '
+export PS1='╭─[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]]\[\033[31m\]$(__git_ps1)\[\033[00m\]\n╰─○ '
 
 
 # bash color
@@ -65,3 +59,7 @@ alias ls="ls -G"
 
 
 alias ipa="ifconfig | grep inet"
+
+
+alias gpullo='git pull origin master'
+alias gpusho='git push origin master'

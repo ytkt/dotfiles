@@ -17,7 +17,7 @@
   ;; 日本語フォントをヒラギノ明朝 Proに
   (set-fontset-font
    nil 'japanese-jisx0208
-   (font-spec :family "ヒラギノ明朝 Pro"))
+   (font-spec :family "Hiragino Kaku Gothic ProN"))
 
   ;; フォントの横幅を調整する
   (setq face-font-rescale-alist
