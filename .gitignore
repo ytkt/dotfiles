@@ -13,13 +13,12 @@
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
-.elc
+*.elc
 auto-save-list
 tramp
 .\#*
+*.dat
 
 # Org-mode
 .org-id-locations
 *_archive
-
-
