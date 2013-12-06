@@ -37,3 +37,7 @@
   (color-theme-initialize)
   ;; テーマをhoberに変更する
   (color-theme-hober))
+
+;; 折り返ししない
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
