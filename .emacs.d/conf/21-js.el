@@ -1,2 +1,2 @@
 (add-to-list 'auto-mode-alist
-             '("\\.js$" . js2-mode))
+             '("\\.js" . js2-mode))
