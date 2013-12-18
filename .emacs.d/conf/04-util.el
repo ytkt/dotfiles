@@ -6,3 +6,6 @@
 (setq undo-no-redo t)
 (setq undo-limit 60000)
 (setq undo-strong-limit 600000)
+
+;; global-auto-revert-mode を有効にする
+(global-auto-revert-mode 1)
