@@ -17,14 +17,15 @@ eval "$(rbenv init -)"
 # Cocoa Emacs
 #alias emacs='open -n /Applications/Emacs.app'
 alias emacsnw='emacs -nw'
-alias emacs='/usr/local/Cellar/emacs/24.2/bin/emacs'
+alias emacs='emacsclient -nw -a ""'
+#alias emacs='/usr/local/Cellar/emacs/24.2/bin/emacs'
 #alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 #alias emacs='open -n /Applications/Emacs.app'
 
 # copy current directory path
 alias pwdc='pwd | pbcopy'
 
-# 
+#
 alias mindent='gnuindent -nbad -bap -nbc -nbbo -br -ce -cdw -cdb -sc -cs -di2 -ndj -i2 -nip -lp -npcs -nprs -psl -nsaf -nsai -nsaw -nsob'
 
 # For javac encoding

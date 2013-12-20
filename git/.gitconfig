@@ -1,8 +1,8 @@
 [user]
-	name = Yuta Kato
-	email = yyttkktt@gmail.com
+        name = Yuta Kato
+        email = yyttkktt@gmail.com
 [color]
-	ui = auto
+        ui = auto
 [alias]
   ch = checkout
   co = commit
@@ -10,11 +10,11 @@
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
-	excludesfile = /Users/yuta/.gitignore
-	editor = emacs -q
+        excludesfile = /Users/yuta/.gitignore
+        editor = emacs
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+        path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
