@@ -4,7 +4,7 @@
 
 #!/.emacs.d/init.el
 #!/.emacs.d/conf
-.emacs.d/elpa/archives
+.emacs.d/elpa/
 
 .emacs.d/undohist
 .DS_Store### /Users/yuta/.gitignore-boilerplates/Global/Emacs.gitignore
