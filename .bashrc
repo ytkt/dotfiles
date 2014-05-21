@@ -64,3 +64,6 @@ alias ipa="ifconfig | grep inet"
 
 alias gpullo='git pull origin master'
 alias gpusho='git push origin master'
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+export HOMEBREW_GITHUB_API_TOKEN="754d2f7d3dcb781a2f76457f452a1c96455cf540"
