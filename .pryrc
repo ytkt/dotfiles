@@ -1,4 +1,7 @@
 require 'rubygems' if RUBY_VERSION < '1.9'
-require 'awesome_print'
+begin
+  require 'awesome_print'
+rescue LoadError
+end
 
 Pry.print = proc{|output,value| output.puts value.ai }
