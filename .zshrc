@@ -10,14 +10,16 @@ compinit -u
 NEWLINE=$'\n'
 autoload -Uz vcs_info
 setopt prompt_subst
+
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
+zstyle ':vcs_info:*' actionformats '(%b|%a)'
 precmd () { vcs_info }
-PROMPT="╭─[%F{green}${USER}@${HOST}%f]${vcs_info_msg_0_}${NEWLINE}╰─○ "
-RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+precmd () { vcs_info }
+PROMPT='╭─[%F{green}${USER}@${HOST}%f]${vcs_info_msg_0_}${NEWLINE}╰─○ '
+RPROMPT='%{${fg[blue]}%}[%~]%{${reset_color}%}'
 
 
 alias emacs='emacsclient -nw -a ""'
@@ -30,5 +32,8 @@ alias la='ls -al'
 #alias start_psql='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 #alias stop_psql='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeout 300`
+
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
+eval "$(rbenv init -)"
