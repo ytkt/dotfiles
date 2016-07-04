@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ln -sf $HOME/dotfiles/.zshrc $HOME/
+ln -sf $HOME/dotfiles/.zsh.zplug $HOME/
 ln -sf $HOME/dotfiles/.bashrc $HOME/
 ln -sf $HOME/dotfiles/.bash_profile $HOME/
 ln -sf $HOME/dotfiles/.emacs.d $HOME/
