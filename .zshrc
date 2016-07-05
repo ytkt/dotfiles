@@ -5,6 +5,11 @@ compinit -u
 
 . $HOME/.zsh.zplug
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_dups     # ignore duplication command history list
+setopt share_history        # share command history data
 
 #export PS1='╭─[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]]\[\033[31m\]\[\033[00m\]\n╰─○ '
 NEWLINE=$'\n'
