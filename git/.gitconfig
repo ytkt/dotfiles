@@ -1,6 +1,7 @@
 [user]
-        name = Yuta Kato
+        name = ytkt
         email = yyttkktt@gmail.com
+	signingkey = A76FA1B3
 [color]
         ui = auto
 [alias]
@@ -18,3 +19,7 @@
 [mergetool "sourcetree"]
         cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
         trustExitCode = true
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
