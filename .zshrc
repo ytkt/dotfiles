@@ -42,3 +42,7 @@ eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeo
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 eval "$(rbenv init -)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
