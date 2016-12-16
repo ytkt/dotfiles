@@ -24,7 +24,7 @@ zstyle ':vcs_info:*' actionformats '(%b|%a)'
 precmd () { vcs_info }
 precmd () { vcs_info }
 PROMPT='╭─[%F{green}${USER}@${HOST}%f]${vcs_info_msg_0_}${NEWLINE}╰─○ '
-RPROMPT='%{${fg[blue]}%}[%~]%{${reset_color}%}'
+RPROMPT='%{${fg[blue]}%}[%~ %T]%{${reset_color}%}'
 
 
 alias emacs='emacsclient -nw -a ""'
