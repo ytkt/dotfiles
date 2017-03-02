@@ -12,7 +12,7 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
         excludesfile = /Users/yuta/.gitignore
-        editor = emacs
+        editor = "emacs -q"
 [difftool "sourcetree"]
         cmd = opendiff \"$LOCAL\" \"$REMOTE\"
         path =
