@@ -36,16 +36,21 @@ alias l='ls -l'
 alias la='ls -al'
 #alias start_psql='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 #alias stop_psql='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias be="bundle exec"
 
-eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeout 300`
+eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeout 3000`
 
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 eval "$(rbenv init -)"
 
+# elasticbeanstalk
+export PATH="~/Library/Python/2.7/bin:$PATH"
+
 # nvm
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+# . "$(brew --prefix nvm)/nvm.sh"
+# . "/usr/local/opt/nvm/nvm.sh"
 
 autoload -U compinit
 compinit
@@ -54,3 +59,11 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46
 alias ls="ls -GF"
 alias gls="gls --color"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+
+# The next line updates PATH for the Google Cloud SDK.
+source '$HOME/Downloads/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'
+
+setopt nonomatch
