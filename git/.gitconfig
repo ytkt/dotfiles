@@ -23,3 +23,5 @@
 	program = gpg2
 [commit]
 	gpgsign = false
+[http]
+	cookiefile = $(HOME)/.gitcookies
