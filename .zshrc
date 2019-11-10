@@ -71,3 +71,5 @@ setopt nonomatch
 
 # openssl
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export PATH="$PATH:$HOME/dev/lib/flutter/bin"
