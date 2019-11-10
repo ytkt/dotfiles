@@ -62,9 +62,9 @@ alias gls="gls --color"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 # The next line updates PATH for the Google Cloud SDK.
-source '$HOME/Downloads/google-cloud-sdk/path.zsh.inc'
+source "$HOME/dev/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-source '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'
+source "$HOME/dev/google-cloud-sdk/completion.zsh.inc"
 
 setopt nonomatch
