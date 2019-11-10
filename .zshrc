@@ -38,7 +38,8 @@ alias la='ls -al'
 #alias stop_psql='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias be="bundle exec"
 
-eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeout 3000`
+#eval `keychain --inherit any --eval --agents ssh,gpg github_rsa A76FA1B3 --timeout 3000`
+eval `keychain --inherit any --eval --agents ssh github_rsa --timeout 3000`
 
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
