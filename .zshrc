@@ -49,9 +49,9 @@ eval "$(rbenv init -)"
 export PATH="~/Library/Python/2.7/bin:$PATH"
 
 # nvm
-# export NVM_DIR="$HOME/.nvm"
-# . "$(brew --prefix nvm)/nvm.sh"
-# . "/usr/local/opt/nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh"
 
 autoload -U compinit
 compinit
