@@ -68,3 +68,6 @@ source "$HOME/dev/google-cloud-sdk/path.zsh.inc"
 source "$HOME/dev/google-cloud-sdk/completion.zsh.inc"
 
 setopt nonomatch
+
+# openssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
