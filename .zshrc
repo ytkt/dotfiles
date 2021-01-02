@@ -1,3 +1,5 @@
+LANG=en_US.UTF-8
+
 fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 autoload -U compinit
@@ -73,3 +75,19 @@ setopt nonomatch
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 export PATH="$PATH:$HOME/dev/lib/flutter/bin"
+
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+
+# for linux
+case ${OSTYPE} in
+    darwin*)
+	;;
+    linux*)
+	export PATH="$HOME/bin:$PATH"
+	;;
+esac
+if type xdg-open > /dev/null ; then
+    alias open=xdg-open
+fi
